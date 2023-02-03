@@ -47,10 +47,10 @@ class GithubUser {
     }
 
     async fetchContent() {
-        this.userContent = await octokit.request("GET /users/{OthmanAdi}", {
+        this.userContent = await octokit.request("GET /users/{username}", {
             username: this.userName,
         });
-        this.repoContent = await octokit.paginate("GET /users/{OthmanAdi}/repos", {
+        this.repoContent = await octokit.paginate("GET /users/{owner}/repos", {
             owner: this.userName,
         });
         this.name = this.userContent.data.name;
